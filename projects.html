@@ -1,647 +1,395 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
 
-    <title>Projects | Bhumi Bhateja</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta
-        name="description"
-        content="Data analytics and AI projects created by Bhumi Bhateja."
-    >
+  <meta
+    name="description"
+    content="Bhumi Bhateja — Data Analytics and AI projects."
+  >
 
-    <style>
-        :root {
-            --primary: #1f7a5c;
-            --primary-dark: #155c45;
-            --primary-light: #e8f5ef;
-            --heading: #16352b;
-            --text: #4d625a;
-            --background: #f5faf7;
-            --white: #ffffff;
-            --border: #d9e9e1;
-            --shadow: 0 12px 35px rgba(22, 53, 43, 0.09);
-        }
+  <title>Bhumi Bhateja | Projects</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: var(--text);
-            background-color: var(--background);
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        /* Navigation */
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 7%;
-            background: rgba(255, 255, 255, 0.96);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            color: var(--heading);
-            font-size: 24px;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--heading);
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        /* Header */
-
-        .project-header {
-            padding: 90px 7% 65px;
-            text-align: center;
-            background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(31, 122, 92, 0.15),
-                    transparent 35%
-                ),
-                linear-gradient(135deg, #edf8f2, #ffffff);
-        }
-
-        .section-label {
-            display: inline-block;
-            margin-bottom: 14px;
-            color: var(--primary);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .project-header h1 {
-            margin-bottom: 18px;
-            color: var(--heading);
-            font-size: clamp(38px, 6vw, 62px);
-            line-height: 1.15;
-        }
-
-        .project-header p {
-            max-width: 720px;
-            margin: 0 auto;
-            font-size: 18px;
-        }
-
-        /* Projects section */
-
-        .projects-section {
-            max-width: 1250px;
-            margin: auto;
-            padding: 75px 5%;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            box-shadow: var(--shadow);
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 18px 45px rgba(22, 53, 43, 0.14);
-        }
-
-        .project-card.featured {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 0.9fr 1.1fr;
-        }
-
-        .project-visual {
-            min-height: 245px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 35px;
-            color: var(--white);
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(16, 42, 67, 0.96),
-                    rgba(31, 122, 92, 0.92)
-                );
-        }
-
-        .project-visual.analytics {
-            min-height: 100%;
-        }
-
-        .visual-content {
-            width: 100%;
-            max-width: 390px;
-        }
-
-        .visual-label {
-            display: block;
-            margin-bottom: 15px;
-            color: #9fe4cc;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-
-        .project-visual h2 {
-            margin-bottom: 18px;
-            font-size: clamp(28px, 4vw, 42px);
-            line-height: 1.15;
-        }
-
-        .visual-kpis {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 28px;
-        }
-
-        .visual-kpis div {
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 10px;
-        }
-
-        .visual-kpis strong,
-        .visual-kpis span {
-            display: block;
-        }
-
-        .visual-kpis strong {
-            font-size: 21px;
-        }
-
-        .visual-kpis span {
-            color: #d7eee6;
-            font-size: 12px;
-        }
-
-        .project-content {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            padding: 32px;
-        }
-
-        .project-number {
-            margin-bottom: 10px;
-            color: var(--primary);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-        }
-
-        .project-content h2 {
-            margin-bottom: 14px;
-            color: var(--heading);
-            font-size: 27px;
-            line-height: 1.25;
-        }
-
-        .project-content p {
-            margin-bottom: 20px;
-        }
-
-        .project-insights {
-            margin: 0 0 24px 20px;
-        }
-
-        .project-insights li {
-            margin-bottom: 8px;
-        }
-
-        .technologies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .technology {
-            padding: 7px 12px;
-            color: var(--primary-dark);
-            background: var(--primary-light);
-            border: 1px solid #cce8db;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .project-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: auto;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 45px;
-            padding: 10px 20px;
-            color: var(--white);
-            background-color: var(--primary);
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .project-link.secondary {
-            color: var(--primary);
-            background-color: transparent;
-        }
-
-        .project-link.secondary:hover {
-            color: var(--white);
-            background-color: var(--primary);
-        }
-
-        .project-status {
-            display: inline-block;
-            align-self: flex-start;
-            margin-top: auto;
-            padding: 8px 14px;
-            color: #745d14;
-            background: #fff7d6;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* Footer */
-
-        footer {
-            padding: 28px 7%;
-            color: #d6ebe3;
-            text-align: center;
-            background: var(--heading);
-        }
-
-        footer strong {
-            color: var(--white);
-        }
-
-        /* Responsive design */
-
-        @media (max-width: 850px) {
-            .navbar {
-                padding: 16px 5%;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .project-card.featured {
-                display: flex;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card.featured {
-                grid-column: auto;
-            }
-
-            .project-visual.analytics {
-                min-height: 310px;
-            }
-        }
-
-        @media (max-width: 560px) {
-            .navbar {
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .project-header {
-                padding: 65px 6% 50px;
-            }
-
-            .projects-section {
-                padding: 50px 5%;
-            }
-
-            .project-content {
-                padding: 25px;
-            }
-
-            .project-buttons,
-            .project-link {
-                width: 100%;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">Bhumi<span>.</span></a>
+  <!-- Navigation -->
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="project.html" class="active">Projects</a></li>
-        </ul>
+  <header class="nav">
+
+    <a class="brand" href="index.html">
+      BHUMI<span>.</span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Open menu">
+      ☰
+    </button>
+
+    <nav class="nav-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a class="active" href="projects.html">
+        Projects
+      </a>
+
+      <a href="experience.html">
+        Experience
+      </a>
+
+      <a
+        class="nav-cta"
+        href="mailto:bhatejabhumi@gmail.com"
+      >
+        Let's Connect
+      </a>
+
     </nav>
 
-    <!-- Page heading -->
-    <header class="project-header">
-        <span class="section-label">My Portfolio</span>
-        <h1>Projects That Turn Data Into Decisions</h1>
+  </header>
 
-        <p>
-            A collection of data analytics and artificial intelligence
-            projects created using Python, Power BI, Excel and modern
-            web-development technologies.
-        </p>
-    </header>
 
-    <main class="projects-section">
+  <main>
 
-        <div class="projects-grid">
+    <!-- Page Introduction -->
 
-            <!-- Retail Sales Analysis -->
-            <article class="project-card featured">
+    <section class="page page-header">
 
-                <div class="project-visual analytics">
-                    <div class="visual-content">
-                        <span class="visual-label">FEATURED ANALYTICS PROJECT</span>
+      <div class="section-label">
+        02 / SELECTED WORK
+      </div>
 
-                        <h2>Retail Sales Intelligence</h2>
+      <h1>
+        Projects that show how I
+        <em>learn by building.</em>
+      </h1>
 
-                        <p>
-                            Interactive analysis of completed sales across
-                            products, countries and time.
-                        </p>
+      <p>
+        A mix of data analytics work and academic AI concepts.
+        Project status is shown honestly so the portfolio reflects
+        what is completed versus still in development.
+      </p>
 
-                        <div class="visual-kpis">
-                            <div>
-                                <strong>£10.64M</strong>
-                                <span>Revenue</span>
-                            </div>
+    </section>
 
-                            <div>
-                                <strong>19,960</strong>
-                                <span>Orders</span>
-                            </div>
 
-                            <div>
-                                <strong>5.57M</strong>
-                                <span>Units sold</span>
-                            </div>
+    <!-- Projects Section -->
 
-                            <div>
-                                <strong>38</strong>
-                                <span>Countries</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section class="section page project-list">
 
-                <div class="project-content">
-                    <span class="project-number">PROJECT 01</span>
 
-                    <h2>Sales Data Analysis & Reporting</h2>
+      <!-- Project 1: Retail Sales Analysis -->
 
-                    <p>
-                        Analysed more than 541,000 online retail transactions
-                        to identify revenue patterns, leading markets,
-                        high-volume products and seasonal sales trends.
-                    </p>
+      <article class="project large">
 
-                    <ul class="project-insights">
-                        <li>Cleaned missing, duplicate and cancelled records.</li>
-                        <li>Created verified sales KPIs and visual reports.</li>
-                        <li>Built an interactive dashboard with market filters.</li>
-                        <li>Generated business recommendations from the results.</li>
-                    </ul>
+        <div class="project-meta">
 
-                    <div class="technologies">
-                        <span class="technology">Python</span>
-                        <span class="technology">Pandas</span>
-                        <span class="technology">Matplotlib</span>
-                        <span class="technology">Jupyter</span>
-                        <span class="technology">HTML</span>
-                        <span class="technology">CSS</span>
-                        <span class="technology">JavaScript</span>
-                    </div>
+          <span class="tag green">
+            DATA ANALYTICS
+          </span>
 
-                    <div class="project-buttons">
-                        <a
-                            class="project-link"
-                            href="https://bhumi008007.github.io/Retail_Sales_Analysis_Project/SA/retail-sales-analysis/dashboard/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View Live Dashboard
-                        </a>
-
-                        <a
-                            class="project-link secondary"
-                            href="https://github.com/Bhumi008007/Retail_Sales_Analysis_Project"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View GitHub Repository
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Customer Personality Analysis -->
-            <article class="project-card">
-                <div class="project-content">
-                    <span class="project-number">PROJECT 02</span>
-
-                    <h2>Customer Personality Analysis</h2>
-
-                    <p>
-                        Analysed customer demographics, income, household
-                        information, spending behaviour and campaign responses
-                        to identify meaningful customer segments.
-                    </p>
-
-                    <div class="technologies">
-                        <span class="technology">Python</span>
-                        <span class="technology">Pandas</span>
-                        <span class="technology">Data Cleaning</span>
-                        <span class="technology">Data Visualization</span>
-                    </div>
-
-                    <div class="project-buttons">
-                        <a
-                            class="project-link"
-                            href="https://github.com/Bhumi008007/customer-personality-dashboard"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View Project
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- KisanAI -->
-            <article class="project-card">
-                <div class="project-content">
-                    <span class="project-number">PROJECT 03</span>
-
-                    <h2>KisanAI – Smart Farming Assistant</h2>
-
-                    <p>
-                        An AI-based farming assistant designed to answer
-                        agriculture-related questions and provide live weather
-                        details, crop guidance and irrigation suggestions.
-                    </p>
-
-                    <div class="technologies">
-                        <span class="technology">React</span>
-                        <span class="technology">Vite</span>
-                        <span class="technology">Python</span>
-                        <span class="technology">Flask</span>
-                        <span class="technology">REST API</span>
-                    </div>
-
-                    <span class="project-status">Local Prototype</span>
-                </div>
-            </article>
-
-            <!-- BrainX -->
-            <article class="project-card">
-                <div class="project-content">
-                    <span class="project-number">PROJECT 04</span>
-
-                    <h2>BrainX – Intelligent AI Assistant</h2>
-
-                    <p>
-                        A ChatGPT-inspired intelligent assistant being created
-                        as a final-year BCA project with authentication,
-                        AI-powered conversations and chat-history management.
-                    </p>
-
-                    <div class="technologies">
-                        <span class="technology">React</span>
-                        <span class="technology">JavaScript</span>
-                        <span class="technology">AI Integration</span>
-                        <span class="technology">API Development</span>
-                    </div>
-
-                    <span class="project-status">In Development</span>
-                </div>
-            </article>
-
-            <!-- Power BI project -->
-            <article class="project-card">
-                <div class="project-content">
-                    <span class="project-number">PROJECT 05</span>
-
-                    <h2>Interactive Power BI Reports</h2>
-
-                    <p>
-                        Created data visualisations and reports using KPI
-                        cards, charts, slicers, filters and DAX calculations
-                        to communicate business performance clearly.
-                    </p>
-
-                    <div class="technologies">
-                        <span class="technology">Power BI</span>
-                        <span class="technology">DAX</span>
-                        <span class="technology">Power Query</span>
-                        <span class="technology">Excel</span>
-                    </div>
-
-                    <span class="project-status">Learning Portfolio</span>
-                </div>
-            </article>
+          <span>01</span>
 
         </div>
-    </main>
 
-    <footer>
+        <h2>
+          Sales Data Analysis & Reporting for a Retail Chain
+        </h2>
+
         <p>
-            © 2026 <strong>Bhumi Bhateja</strong> · Designed for my
-            Data Analytics Portfolio
+          An internship project focused on cleaning and analysing
+          more than 541,000 retail transactions to identify sales
+          patterns, top-selling products, seasonal trends and
+          country-wise business performance.
         </p>
-    </footer>
+
+        <div class="insight">
+
+          <b>Key insight</b>
+
+          <span>
+            The United Kingdom is the strongest market, while
+            November 2011 recorded the highest monthly revenue.
+            A smaller group of products accounts for a large share
+            of sales quantity.
+          </span>
+
+        </div>
+
+        <div class="tech-row">
+
+          <span>Python</span>
+          <span>Pandas</span>
+          <span>Matplotlib</span>
+          <span>SQL</span>
+          <span>Excel</span>
+          <span>Jupyter</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+
+        </div>
+
+        <div class="status done">
+          ● Completed project
+        </div>
+
+
+        <!-- Retail project buttons -->
+
+        <div class="project-buttons">
+
+          <a
+            href="https://bhumi008007.github.io/Retail_Sales_Analysis_Project/SA/retail-sales-analysis/dashboard/"
+            class="project-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Live Dashboard ↗
+          </a>
+
+          <a
+            href="https://github.com/Bhumi008007/Retail_Sales_Analysis_Project"
+            class="project-link secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Code ↗
+          </a>
+
+          <a
+            href="https://github.com/Bhumi008007/Retail_Sales_Analysis_Project/raw/refs/heads/main/SA/retail-sales-analysis/presentation/Retail_Sales_Analysis_Bhumi_Bhateja.pptx"
+            class="project-link secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download PPT ↗
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- Project 2: Customer Personality Analysis -->
+
+      <article class="project">
+
+        <div class="project-meta">
+
+          <span class="tag blue">
+            CUSTOMER ANALYTICS
+          </span>
+
+          <span>02</span>
+
+        </div>
+
+        <h2>
+          Customer Personality Analysis
+        </h2>
+
+        <p>
+          An interactive customer analytics project that examines
+          customer demographics, income, household characteristics,
+          spending behaviour and marketing campaign responses.
+        </p>
+
+        <div class="tech-row">
+
+          <span>Python</span>
+          <span>Flask</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>Data Visualisation</span>
+
+        </div>
+
+        <div class="status done">
+          ● Completed project
+        </div>
+
+
+        <!-- Customer Personality project buttons -->
+
+        <div class="project-buttons">
+
+          <a
+            href="https://customer-personality-dashboard.vercel.app/"
+            class="project-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Live Project ↗
+          </a>
+
+          <a
+            href="https://github.com/Bhumi008007/customer-personality-dashboard"
+            class="project-link secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Code ↗
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- Project 3: Kisan AI -->
+
+      <article class="project">
+
+        <div class="project-meta">
+
+          <span class="tag purple">
+            AI • AGRITECH
+          </span>
+
+          <span>03</span>
+
+        </div>
+
+        <h2>
+          Kisan AI — Smart Farming Assistant
+        </h2>
+
+        <p>
+          A mobile-first AI farming concept designed to bring crop
+          and soil advice, weather alerts, plant disease detection,
+          mandi prices and government-scheme guidance into one
+          accessible platform.
+        </p>
+
+        <div class="tech-row">
+
+          <span>React</span>
+          <span>Tailwind CSS</span>
+          <span>Flask</span>
+          <span>Gemini AI</span>
+          <span>MySQL</span>
+
+        </div>
+
+        <div class="status progress">
+          ● Academic project • In development
+        </div>
+
+      </article>
+
+
+      <!-- Project 4: BrainX -->
+
+      <article class="project">
+
+        <div class="project-meta">
+
+          <span class="tag orange">
+            AI • WEB
+          </span>
+
+          <span>04</span>
+
+        </div>
+
+        <h2>
+          BrainX — Intelligent AI Assistant
+        </h2>
+
+        <p>
+          An academic AI assistant focused on conversational
+          interaction, a modern web frontend and planned AI and
+          backend integration. It is being developed as a team
+          project.
+        </p>
+
+        <div class="tech-row">
+
+          <span>React</span>
+          <span>AI</span>
+          <span>Frontend</span>
+          <span>Backend</span>
+          <span>API Integration</span>
+
+        </div>
+
+        <div class="status progress">
+          ● Academic project • In development
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- Project Approach -->
+
+    <section class="section soft page">
+
+      <div class="section-label">
+        PROJECT APPROACH
+      </div>
+
+      <div class="process">
+
+        <div>
+          <strong>01</strong>
+          <span>Understand the business problem</span>
+        </div>
+
+        <div>
+          <strong>02</strong>
+          <span>Clean and validate the data</span>
+        </div>
+
+        <div>
+          <strong>03</strong>
+          <span>Explore patterns and KPIs</span>
+        </div>
+
+        <div>
+          <strong>04</strong>
+          <span>Visualise and communicate insights</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <span>
+      © <span id="year"></span> Bhumi Bhateja
+    </span>
+
+    <a
+      href="https://github.com/Bhumi008007"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub ↗
+    </a>
+
+  </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
